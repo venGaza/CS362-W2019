@@ -538,7 +538,7 @@ int drawCard(int player, struct gameState *state)
     state->deckCount[player] = state->discardCount[player];
     state->discardCount[player] = 0;//Reset discard
 
-    //Shufffle the deck
+    //Shuffle the deck
     shuffle(player, state);//Shuffle the deck up and make it so that we can draw
    
     if (DEBUG){//Debug statements
@@ -655,7 +655,7 @@ int smithy(int currentPlayer, struct gameState* state, int handPos) {
     return 0;
 }
 
-int adventurer() {
+int adventurer(struct gameState* state, int currentPlayer, int* cardDrawn, int* drawntreasure, int* temphand, int* z) {
   while(drawntreasure<2){
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
@@ -705,7 +705,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      adventurer();
+      adventurer(state, currentPlayer, &cardDrawn, &drawntreasure, &temphand, &z);
 			
     case council_room:
       //+4 Cards
