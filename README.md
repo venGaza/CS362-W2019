@@ -4,11 +4,11 @@ Software Engineering (CS 362) class's master repository for Winter 2019.
 Week 2
 -Refactor the dominion code for 5 of the cards which include the following:
 
-	-Smithy
-	-Adventurer
-	-Cutpurse
-	-Embargo
-	-Baron
+	-Smithy -> smithyEffect()
+	-Adventurer -> adventurerEffect()
+	-Cutpurse -> cutpurseEffect()
+	-Embargo -> EmbargoEffect()
+	-Baron -> baronEffect()
 
 -Bugs
 
