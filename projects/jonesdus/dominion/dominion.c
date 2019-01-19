@@ -655,7 +655,7 @@ int smithyEffect(int currentPlayer, struct gameState* state, int handPos, int i)
     return 0;
 }
 
-int adventurerEffect(struct gameState* state, int currentPlayer, int* cardDrawn, int* drawntreasure, int* temphand, int* z) {
+int adventurerEffect(struct gameState* state, int currentPlayer, int cardDrawn, int drawntreasure, int temphand [], int z) {
   while(drawntreasure<2){
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
@@ -706,7 +706,7 @@ int cutpurseEffect(int currentPlayer, struct gameState* state, int handPos, int 
   return 0;
 }
 
-int embargoEffect(int currentPlayer, struct gameState* state, int handPos) {
+int embargoEffect(int currentPlayer, struct gameState* state, int handPos, int choice1) {
   //+2 Coins
   state->coins = state->coins + 2;
 			
@@ -723,7 +723,7 @@ int embargoEffect(int currentPlayer, struct gameState* state, int handPos) {
   return 0;
 }
 
-int baronEffect(currentPlayer, struct gameState* state) {
+int baronEffect(int currentPlayer, struct gameState* state, int choice1) {
   state->numBuys++;//Increase buys by 1!
 
   if (choice1 > 0) {//Boolean true or going to discard an estate
@@ -735,7 +735,7 @@ int baronEffect(currentPlayer, struct gameState* state) {
         state->discard[currentPlayer][state->discardCount[currentPlayer]] = state->hand[currentPlayer][p];
         state->discardCount[currentPlayer]++;
 
-        for(p; p < state->handCount[currentPlayer]; p++) {
+        for(; p < state->handCount[currentPlayer]; p++) {
           state->hand[currentPlayer][p] = state->hand[currentPlayer][p+1];
         }
 
@@ -780,9 +780,9 @@ int baronEffect(currentPlayer, struct gameState* state) {
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
-  int i;
-  int j;
-  int k;
+  int i = 0;
+  int j = 0;
+  int k = 0;
   int x;
   int index;
   int currentPlayer = whoseTurn(state);
@@ -791,7 +791,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
   int drawntreasure=0;
-  int cardDrawn;
+  int cardDrawn = 0;
   int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
@@ -801,7 +801,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      adventurerEffect(state, currentPlayer, &cardDrawn, &drawntreasure, &temphand, &z);
+      adventurerEffect(state, currentPlayer, cardDrawn, drawntreasure, temphand, z);
 			
     case council_room:
       //+4 Cards
@@ -959,7 +959,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case baron:
-      baronEffect(currentPlayer, state); 
+      baronEffect(currentPlayer, state, choice1); 
 		
     case great_hall:
       //+1 Card
@@ -1167,7 +1167,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       cutpurseEffect(currentPlayer, state, handPos, i, j, k);
 
     case embargo: 
-      embargoEffect(currentPlayer, state, handPos);
+      embargoEffect(currentPlayer, state, handPos, choice1);
 		
     case outpost:
       //set outpost flag
