@@ -801,7 +801,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      adventurer(state, currentPlayer, &cardDrawn, &drawntreasure, &temphand, &z);
+      adventurerEffect(state, currentPlayer, &cardDrawn, &drawntreasure, &temphand, &z);
 			
     case council_room:
       //+4 Cards
@@ -945,7 +945,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      smithy(currentPlayer, state, handPos, i);
+      smithyEffect(currentPlayer, state, handPos, i);
 		
     case village:
       //+1 Card
@@ -959,7 +959,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case baron:
-      baron(currentPlayer, state); 
+      baronEffect(currentPlayer, state); 
 		
     case great_hall:
       //+1 Card
@@ -1164,10 +1164,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case cutpurse:
-      cutpurse(currentPlayer, state, handPos, i, j, k);
+      cutpurseEffect(currentPlayer, state, handPos, i, j, k);
 
     case embargo: 
-      embargo(currentPlayer, state, handPos);
+      embargoEffect(currentPlayer, state, handPos);
 		
     case outpost:
       //set outpost flag
