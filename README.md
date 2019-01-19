@@ -13,7 +13,7 @@ Week 2
 -Bugs
 
 	-Smithy: Draws 4 cards instead of 3
-	-Adventurer: 
-	-Cutpurse:
-	-Embargo: 
+	-Adventurer: Drawn treasures count as 2 instead of 1 
+	-Cutpurse: Players discard a gold instead of a copper
+	-Embargo: Embargo token never added to supply pile
 	-Baron: No bugs

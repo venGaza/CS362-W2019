@@ -663,7 +663,7 @@ int adventurerEffect(struct gameState* state, int currentPlayer, int cardDrawn, 
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasure++;
+      drawntreasure+=2;
     else{
       temphand[z]=cardDrawn;
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
@@ -684,7 +684,7 @@ int cutpurseEffect(int currentPlayer, struct gameState* state, int handPos, int 
   for (i = 0; i < state->numPlayers; i++) {
 	  if (i != currentPlayer) {
       for (j = 0; j < state->handCount[i]; j++) {
-        if (state->hand[i][j] == copper) {
+        if (state->hand[i][j] == gold) {
           discardCard(j, i, state, 0);
           break;
         }
@@ -716,7 +716,7 @@ int embargoEffect(int currentPlayer, struct gameState* state, int handPos, int c
 	}
 			
   //add embargo token to selected supply pile
-  state->embargoTokens[choice1]++;
+  state->embargoTokens[choice1] = 0;
   
   //trash card
   discardCard(handPos, currentPlayer, state, 1);		
