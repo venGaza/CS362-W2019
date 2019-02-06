@@ -63,7 +63,7 @@ runtests: testDrawCard
 #---------------------------------------------------------------------------------
 unittestresults: unittest1 unittest2
 	./unittest1 &> unittestresults.out
-	./unittest2 &> unittestresults.out
+	./unittest2 >> unittestresults.out
 
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out 
@@ -75,5 +75,5 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out \
+	rm -f *.o playdom.exe playdom player player.exe *.gcov *.gcda *.gcno *.so *.out \
 	testDrawCard testDrawCard.exe unittest1
