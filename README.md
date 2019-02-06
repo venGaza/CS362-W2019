@@ -17,3 +17,7 @@ Week 2
 	-Cutpurse: Players discard a gold instead of a copper
 	-Embargo: Embargo token never added to supply pile
 	-Baron: No bugs
+
+Week 3
+-Unit Tests
+	-
