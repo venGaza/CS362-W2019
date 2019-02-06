@@ -19,11 +19,33 @@ badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
-# My unit tests
-testWhoseTurn: unitTest1.c dominion.o rngs.o
+#---------------------------------------------------------------------------------
+# My unit tests and card tests
+#---------------------------------------------------------------------------------
+unittest1: unittest1.c dominion.o rngs.o
 	gcc -o unittest1 -g unitTest1.c dominion.o rngs.o $(CFLAGS)
 
-#######################################################################
+unittest2: unittest2.c dominion.o rngs.o
+	gcc -o unittest2 -g unitTest2.c dominion.o rngs.o $(CFLAGS)
+
+unittest3: unittest3.c dominion.o rngs.o
+	gcc -o unittest3 -g unitTest3.c dominion.o rngs.o $(CFLAGS)
+
+unittest4: unittest4.c dominion.o rngs.o
+	gcc -o unittest4 -g unitTest4.c dominion.o rngs.o $(CFLAGS)
+
+cardtest1: cardtest1.c dominion.o rngs.o
+	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
+
+cardtest2: cardtest2.c dominion.o rngs.o
+	gcc -o cardtest2 -g cardtest2.c dominion.o rngs.o $(CFLAGS)
+
+cardtest3: cardtest3.c dominion.o rngs.o
+	gcc -o cardtest3 -g cardtest3.c dominion.o rngs.o $(CFLAGS)
+
+cardtest4: cardtest4.c dominion.o rngs.o
+	gcc -o cardtest4 -g cardtest4.c dominion.o rngs.o $(CFLAGS)
+#---------------------------------------------------------------------------------
 
 testAll: dominion.o testSuite.c
 	gcc -o testSuite testSuite.c -g  dominion.o rngs.o $(CFLAGS)
@@ -36,13 +58,16 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-# Test Rule
-unittestresults: testWhoseTurn
+#---------------------------------------------------------------------------------
+# My test rule
+#---------------------------------------------------------------------------------
+unittestresults: unittest1 unittest2
 	./unittest1 &> unittestresults.out
+	./unittest2 &> unittestresults.out
 
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out 
-#######################################################################
+#---------------------------------------------------------------------------------
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
@@ -50,4 +75,5 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out \
+	testDrawCard testDrawCard.exe unittest1
