@@ -62,6 +62,8 @@
         printf("***** Returned %d instead of 7 *****\n", result);
     }
 
+    fflush(stdout);
+
     // Check if smithy card was discarded to the right pile (should be only discard)
     if (G.discardCount[0] == 1) {
         printf("smithyCard() was discarded to right pile: PASSED\n");
@@ -70,6 +72,8 @@
         printf("smithyCard() was discarded to right pile: FAILED\n");
         printf("***** Returned %d instead of 1 *****\n", G.discardCount[0]);
     }
+
+    fflush(stdout);
 
     // Check to see if smithy card drew cards from the right pile (should be two cards left)
     if (G.deckCount[0] == 2) {
@@ -80,6 +84,8 @@
         printf("***** Returned %d instead of 2 *****\n", G.deckCount[0]);
     }
 
+    fflush(stdout);
+
     // Check to see that the right card was discarded
     if (G.discard[0][0] == smithy) {
         printf("smithyCard() discarded the correct card: PASSED\n");
@@ -88,6 +94,8 @@
         printf("smithyCard() discarded the correct card: FAILED\n");
         printf("***** Returned %d instead of 0 *****\n", G.discard[0][0]);
     }
+
+    fflush(stdout);
 
     // Print out number of tests passed
     printf("smithy() PASSED %d out of 4 tests\n\n", testsPassed);
