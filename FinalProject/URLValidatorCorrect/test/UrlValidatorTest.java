@@ -87,6 +87,7 @@ protected void setUp() {
       assertTrue(urlVal.isValid("http://www.google.com/"));
       int statusPerLine = 60;
       int printed = 0;
+      int counter= 0;
       if (printIndex)  {
          statusPerLine = 6;
       }
@@ -101,6 +102,7 @@ protected void setUp() {
          }
          String url = testBuffer.toString();
          boolean result = urlVal.isValid(url);
+         counter++;
          if(result == true)
         	 System.out.println(url);
          assertEquals(url, expected, result);
@@ -124,6 +126,7 @@ protected void setUp() {
       if (printStatus) {
          System.out.println();
       }
+      System.out.println(counter);
    }
 
    public void testValidator202() {
@@ -146,8 +149,8 @@ protected void setUp() {
          ResultPair[] part = (ResultPair[]) testParts[testPartsIndexIndex];
          if (carry) {
             if (index < part.length - 1) {
-               index++;
-               testPartsIndex[testPartsIndexIndex] = index;
+               //index++;
+               testPartsIndex[testPartsIndexIndex]++;
                carry = false;
             } else {
                testPartsIndex[testPartsIndexIndex] = 0;
@@ -207,7 +210,7 @@ protected void setUp() {
                                new ResultPair("http:", false),
                                new ResultPair("http/", false),
                                new ResultPair("://", false),
-                               new ResultPair("", true)};
+                               new ResultPair("", false)};
 
    ResultPair[] testUrlAuthority = {new ResultPair("www.google.com", true),
                                   new ResultPair("go.com", true),
@@ -221,7 +224,7 @@ protected void setUp() {
                                   new ResultPair("1.2.3", false),
                                   new ResultPair(".1.2.3.4", false),
                                   new ResultPair("go.a", false),
-                                 new ResultPair("go.a1a", false),
+                                  new ResultPair("go.a1a", false),
                                   new ResultPair("go.1aa", false),
                                   new ResultPair("aaa.", false),
                                   new ResultPair(".aaa", false),
