@@ -8,6 +8,21 @@ dominion.o: dominion.h dominion.c rngs.o
 
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
+
+#---------------------------------------------------------------------------------
+# My unit tests and card tests
+#---------------------------------------------------------------------------------
+cardtest1: randomtestadventure.c dominion.o rngs.o interface.o
+	gcc -o cardtest1 -g randomtestadventure.c dominion.o rngs.o interface.o $(CFLAGS)
+
+cardtest2: randomtestcard1.c dominion.o rngs.o
+	gcc -o cardtest2 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+cardtest3: randomtestcard2.c dominion.o rngs.o
+	gcc -o cardtest3 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+
+#---------------------------------------------------------------------------------
+
 #To run playdom you need to entere: ./playdom <any integer number> like ./playdom 10*/
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
@@ -29,6 +44,20 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
+#---------------------------------------------------------------------------------
+# My test rule
+#---------------------------------------------------------------------------------
+testAdventurer: cardtest1
+	./cardtest1 &> randomtestadventurer.out
+	gcov dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out 
+
+testSmithy: cardtest2
+	./cardtest2 &> randomtestcard1.out
+	gcov dominion.c >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
+
+#---------------------------------------------------------------------------------
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
@@ -36,4 +65,4 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe testAdventurer 
