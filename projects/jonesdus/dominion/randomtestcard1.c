@@ -64,7 +64,7 @@ int main () {
     struct gameState G;
     memset (&G, '\0' , sizeof(struct gameState));
     
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 20; i++) {
         // Randomize the initial gamestate
         randomTestSmithy(&G);
 
@@ -80,18 +80,24 @@ int main () {
         numHandCardsAfter = numHandCards(&G);
 
         // Print results
+        printf("Test #%d\n", testNum);
+
         if (numHandCardsAfter == (numHandCardsBefore + 1)) {
-            printf("Test %d: Card Count Passed ", (testNum));
+            printf("Test %d: Card Count Passed\n", (testNum));
         } else {
-            printf("Test %d: Card Count Failed ", (testNum));
+            printf("Test %d: Card Count Failed\n", (testNum));
+            printf("FAILED STATE: Hand card count after: %d Hand card count Before: %d\n", numHandCardsAfter, numHandCardsBefore);
         }
 
         if (discardCountAfter == (discardCountBefore + 1)) {
             printf("Test %d: Discard Count Passed\n", (testNum));
         } else {
             printf("Test %d: Discard Count Failed\n", (testNum));
+            printf("FAILED STATE: Discard count after: %d Discard count Before: %d\n", discardCountAfter, discardCountBefore);
         }
 
+        printf("-------------------\n");
+        
         // Reset for next round
         testNum++;
         memset (&G, '\0' , sizeof(struct gameState));

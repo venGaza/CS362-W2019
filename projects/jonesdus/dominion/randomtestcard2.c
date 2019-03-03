@@ -74,7 +74,7 @@ int main () {
     struct gameState G;
     memset (&G, '\0' , sizeof(struct gameState));
     
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 20; i++) {
         // Randomize the initial gamestate
         randomTestEmbargo(&G);
         choice1 = rand() % 25;

@@ -84,7 +84,7 @@ int main () {
     struct gameState G;
     memset (&G, '\0' , sizeof(struct gameState));
     
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 20; i++) {
         // Randomize the initial gamestate
         randomTestAdventure(&G);
 
@@ -104,16 +104,18 @@ int main () {
 
         // Should have at least 2 extra coins in hand than before
         if (handCoinsAfter >= (handCoinsBefore + 2)) {
-            printf("Test %d: Coin Count Passed\n", (testNum));
+            printf("Test %d: At least 2 extra coins Passed\n", (testNum));
         } else {
-            printf("Test %d: Coin Count Failed\n", (testNum));
+            printf("Test %d: At least 2 extra coins FAILED\n", (testNum));
+            printf("FAILED STATE: Coin count after: %d Coin count Before: %d\n", handCoinsAfter, handCoinsBefore);
         }
 
         // Should have 1 more card than before (2 treasure cards added and discard adventurer)
         if (numHandCardsAfter == (numHandCardsBefore + 1)) {
-            printf("Test %d: Card Count Passed\n", (testNum));
+            printf("Test %d: Card Count in player's hand Passed\n", (testNum));
         } else {
-            printf("Test %d: Card Count Failed\n", (testNum));
+            printf("Test %d: Card Count in player's hand FAILED\n", (testNum));
+            printf("FAILED STATE: Hand cards after: %d Hand Cards Before: %d\n", numHandCardsAfter, numHandCardsBefore);
         }
 
         printf("-------------------\n");
