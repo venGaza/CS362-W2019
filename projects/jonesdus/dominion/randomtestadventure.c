@@ -100,17 +100,23 @@ int main () {
         numHandCardsAfter = numHandCards(&G);
 
         // Print results
+        printf("Test #%d\n", testNum);
+
+        // Should have at least 2 extra coins in hand than before
         if (handCoinsAfter >= (handCoinsBefore + 2)) {
-            printf("Test %d: Coin Count Passed ", (testNum));
+            printf("Test %d: Coin Count Passed\n", (testNum));
         } else {
-            printf("Test %d: Coin Count Failed", (testNum));
+            printf("Test %d: Coin Count Failed\n", (testNum));
         }
 
-        if (numHandCardsAfter >= (numHandCardsBefore + 2)) {
+        // Should have 1 more card than before (2 treasure cards added and discard adventurer)
+        if (numHandCardsAfter == (numHandCardsBefore + 1)) {
             printf("Test %d: Card Count Passed\n", (testNum));
         } else {
             printf("Test %d: Card Count Failed\n", (testNum));
         }
+
+        printf("-------------------\n");
 
         // Reset for next round
         testNum++;
