@@ -1,23 +1,7 @@
 # CS362-W2019
 Software Engineering (CS 362) class's master repository for Winter 2019.
 
-Week 2
--Refactor the dominion code for 5 of the cards which include the following:
+Week 5
+I used Andrew Lee's dominion.c code base to test my unit tests and random test generator functions. The two cards I that I was able to discover bugs in were adventurer and smithy.
 
-	-Smithy -> smithyEffect()
-	-Adventurer -> adventurerEffect()
-	-Cutpurse -> cutpurseEffect()
-	-Embargo -> EmbargoEffect()
-	-Baron -> baronEffect()
-
--Bugs
-
-	-Smithy: Draws 4 cards instead of 3
-	-Adventurer: Drawn treasures count as 2 instead of 1 
-	-Cutpurse: Players discard a gold instead of a copper
-	-Embargo: Embargo token never added to supply pile
-	-Baron: No bugs
-
-Week 3
--Unit Tests
-	-
+The smithy card contained an off by one error while the adventurer card failed to recognize gold as treasure card.
