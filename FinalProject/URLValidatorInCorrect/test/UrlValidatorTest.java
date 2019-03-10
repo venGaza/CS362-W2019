@@ -57,7 +57,7 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
 
-      // Test valid port
+      // Test valid ports
       System.out.println("\n- Testing Valid Ports (http://www.google.com<port>) -");
       String[] portValid = {":80", ":65535", ":0", ""};
       for (String port : portValid) {
@@ -67,7 +67,7 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
 
-      // Test invalid port
+      // Test invalid ports
       System.out.println("\n- Testing Invalid Ports (http://www.google.com<port> -");
       String[] portInvalid = {":-1", ":65536", ":65a"};
       for (String port : portInvalid) {
@@ -77,7 +77,7 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
 
-      // Test valid path
+      // Test valid paths
       System.out.println("\n- Testing Valid Paths (http://www.google.com/<path>) -");
       String[] pathValid = {"/test1", "/t123", "/$23", "/test1/", "/test1/file"};
       for (String path : pathValid) {
@@ -87,7 +87,7 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
 
-      // Test invalid path
+      // Test invalid paths
       System.out.println("\n- Testing Invalid Paths (http://www.google.com/<path>) -");
       String[] pathInvalid = {"/..", "/../", "/..//file", "/test1//file"};
       for (String path : pathInvalid) {
@@ -97,7 +97,7 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
       
-      // Test valid query
+      // Test valid queries
       System.out.println("\n- Testing Valid Queries (http://www.google.com/<query>) -");
       String[] queryValid = {"?action=view", "?action=edit&mode=up", ""};
       for (String query : queryValid) {
@@ -107,8 +107,8 @@ public class UrlValidatorTest extends TestCase {
          System.out.println(output);
       }
 
-      /* TODO: What triggers a query to be invalid?
-      // Test invalid query 
+      /*
+      // Test invalid queries 
       System.out.println("\n- Testing Invalid Queries -");
       String[] queryInvalid = {};
       for (String query : queryInvalid) {
