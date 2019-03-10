@@ -142,6 +142,11 @@ public class UrlValidatorTest extends TestCase {
    // Main Function
    public static void main(String[] argv) {
 	   UrlValidatorTest fct = new UrlValidatorTest("url test");
+      
+      System.out.println("***** START OF TESTS *****\n");
       fct.testManualTest();
+
+
+      System.out.println("\n ***** END OF TESTS *****");
    }
 }
