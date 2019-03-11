@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - UrlValidatorTest",
+            "request": "launch",
+            "mainClass": "UrlValidatorTest",
+            "projectName": "URLValidatorInCorrect"
+        }
+    ]
+}
